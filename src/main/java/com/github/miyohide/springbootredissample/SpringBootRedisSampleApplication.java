@@ -16,7 +16,7 @@ public class SpringBootRedisSampleApplication implements CommandLineRunner {
     private MyService myService;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         myService.setData();
         myService.getData();
     }

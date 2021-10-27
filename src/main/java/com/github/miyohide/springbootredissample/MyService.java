@@ -19,6 +19,11 @@ public class MyService {
             String k = String.format("my_key_%05d", i);
             String v = String.format("my_val_%05d", i);
             redisTemplate.opsForValue().set(k, v);
+            try {
+                Thread.sleep(1_000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

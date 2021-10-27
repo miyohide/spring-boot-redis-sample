@@ -12,8 +12,11 @@ public class SpringBootRedisSampleApplication implements CommandLineRunner {
         SpringApplication.run(SpringBootRedisSampleApplication.class, args);
     }
 
-    @Autowired
-    private MyService myService;
+    private final MyService myService;
+
+    public SpringBootRedisSampleApplication(MyService myService) {
+        this.myService = myService;
+    }
 
     @Override
     public void run(String... args) {

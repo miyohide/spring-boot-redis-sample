@@ -21,3 +21,12 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jib {
+    to {
+        image = 'miyohide/redis-sample'
+    }
+    container {
+        creationTime = 'USE_CURRENT_TIMESTAMP'
+    }
+}

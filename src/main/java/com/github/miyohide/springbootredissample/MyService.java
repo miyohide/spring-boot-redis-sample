@@ -16,7 +16,7 @@ public class MyService {
     }
 
     public void getData() {
-        String val = redisTemplate.opsForValue().get("my_key2").toString();
+        String val = redisTemplate.opsForValue().get("my_key2");
         System.out.println("----- Redis data is = [" + val + "] -----");
     }
 }

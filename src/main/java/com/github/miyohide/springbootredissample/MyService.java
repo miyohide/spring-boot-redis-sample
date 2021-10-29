@@ -19,7 +19,7 @@ public class MyService {
 
     public void setData() {
         log.info("start setData method");
-        for (int i = 0; i < 1_000; i++) {
+        for (int i = 0; i < 100; i++) {
             String k = String.format("my_key_%05d", i);
             String v = String.format("my_val_%05d", i);
             log.info("set data to redis. key = [" + k + "] v = [" + v + "]");

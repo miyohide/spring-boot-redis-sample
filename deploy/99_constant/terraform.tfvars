@@ -1,3 +1,6 @@
 rg_location = "japaneast"
 rg_name = "rg-redis-sample"
 log_workspace_name = "log-redis-ws"
+redis_name = "redis-miyohide-001"
+container_instance_name = "miyohideredisbatch001"
+image_name = "miyohide/redis-sample:latest"

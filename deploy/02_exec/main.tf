@@ -2,6 +2,11 @@ provider "azurerm" {
   features {}
 }
 
+data "azurerm_container_registry" "cr" {
+  name                = var.acr_name
+  resource_group_name = var.rg_name
+}
+
 data "azurerm_redis_cache" "redis" {
   name                = var.redis_name
   resource_group_name = var.rg_name
@@ -21,9 +26,15 @@ resource "azurerm_container_group" "aci" {
   ip_address_type = "Public"
   restart_policy  = "Never"
 
+  image_registry_credential {
+    password = data.azurerm_container_registry.cr.admin_password
+    server   = data.azurerm_container_registry.cr.login_server
+    username = data.azurerm_container_registry.cr.admin_username
+  }
+
   container {
     cpu    = 0.5
-    image  = var.image_name
+    image  = "${data.azurerm_container_registry.cr.login_server}/redis-sample:latest"
     memory = 1.5
     name   = "redis-sample"
     # ポートの設定は必須っぽいので、適当なものを設定

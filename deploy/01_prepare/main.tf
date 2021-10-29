@@ -21,6 +21,15 @@ resource "azurerm_redis_cache" "redis" {
   redis_version = "6"
 }
 
+# Azure Container Registry
+resource "azurerm_container_registry" "acr" {
+  location            = azurerm_resource_group.rg.location
+  name                = var.acr_name
+  resource_group_name = azurerm_resource_group.rg.name
+  sku                 = "Basic"
+  admin_enabled       = true
+}
+
 # Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "log" {
   location            = azurerm_resource_group.rg.location
